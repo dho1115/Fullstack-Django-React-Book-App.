@@ -43,6 +43,11 @@ function App() {
       } else {
         console.error({ error, errorCode: error.code, errorMessage: error.message });
       }
+    } finally {
+      if ((title != 'Default Title') || (releaseYear != 0)) {
+        setTitle("Default Title");
+        setReleaseYear(0);
+      }
     }
   }
   
@@ -50,10 +55,6 @@ function App() {
     fetchBooks()
     return () => setBooks([]);
   }, []);
-
-  useEffect(() => {
-    console.log({title, releaseYear})
-  }, [title, releaseYear])
 
   return (
     <div className="App">
